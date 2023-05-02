@@ -12,7 +12,11 @@ function HomePage() {
 }
 
 export async function getStaticProps() {
-  
+  return {
+    props: {
+      featuredEvents: 
+    }
+  }
 }
 
 
