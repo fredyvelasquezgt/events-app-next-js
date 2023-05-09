@@ -24,7 +24,13 @@ function AllEventsPage() {
 }
 
 export async function getStaticProps() {
+  const events = await getAllEvents(); //aqui recibo todos los eventos
 
+  return { //aqui hago publicos los eventos con props
+    props: {
+      events: events
+    }
+  }
 }
 
 export default AllEventsPage;
