@@ -1,4 +1,4 @@
-import { getFeaturedEvents } from '../dummy-data';
+import { getFeaturedEvents } from '../helpers/api-util
 import EventList from '../components/events/event-list';
 
 function HomePage() {
