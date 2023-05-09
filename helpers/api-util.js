@@ -11,9 +11,11 @@ export async  function getAllEvents() {
       ...data[key]
     })
   }
+  return events;
 }
 
 
 export async function getFeaturedEvents() {
-    return DUMMY_EVENTS.filter((event) => event.isFeatured);
+    const allEvents = await getAllEvents();
+    return allEvents.filter((event) => event.isFeatured);
   }
