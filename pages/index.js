@@ -6,7 +6,7 @@ function HomePage(props) {
 
   return (
     <div>
-      <EventList items={featuredEvents} />
+      <EventList items={props.events} />
     </div>
   );
 }
