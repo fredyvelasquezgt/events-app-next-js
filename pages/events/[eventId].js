@@ -1,5 +1,4 @@
 import { Fragment } from 'react';
-import { useRouter } from 'next/router';
 import EventSummary from '../../components/event-detail/event-summary';
 import EventLogistics from '../../components/event-detail/event-logistics';
 import EventContent from '../../components/event-detail/event-content';
@@ -41,6 +40,15 @@ export async function getStaticProps(context) {
     props: {
       selectedEvent: event
     }
+  }
+}
+
+//para que events ID debe pre renderizar
+export async function getStaticPaths() {
+  return {
+    paths: [{
+      params: {eventId: 'e1'}
+    }]
   }
 }
 export default EventDetailPage;
