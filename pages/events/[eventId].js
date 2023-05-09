@@ -36,7 +36,7 @@ function EventDetailPage() {
     </Fragment>
   );
 }
-export async function getStaticProps() {
-  
+export async function getStaticProps(context) {
+  const eventId = context.params.eventId;
 }
 export default EventDetailPage;
