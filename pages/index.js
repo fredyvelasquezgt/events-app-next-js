@@ -1,4 +1,4 @@
-import { getFeaturedEvents } from '../helpers/api-util
+import { getFeaturedEvents } from '../helpers/api-util'
 import EventList from '../components/events/event-list';
 
 function HomePage() {
@@ -12,9 +12,10 @@ function HomePage() {
 }
 
 export async function getStaticProps() {
+  const featuredEvents = await getFeaturedEvents();
   return {
     props: {
-      featuredEvents: 
+      events: featuredEvents
     }
   }
 }
