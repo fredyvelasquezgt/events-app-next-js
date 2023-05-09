@@ -1,5 +1,4 @@
 //funcion que me permite fetchear toda mi info desde firbase
-import { getAllEvents } from '../dummy-data';
 export async  function getAllEvents() {
   const response = await fetch('https://nextjs-course-40c91-default-rtdb.firebaseio.com/events.json');
   const data = await response.json()

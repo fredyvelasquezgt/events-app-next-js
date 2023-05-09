@@ -3,7 +3,7 @@ import EventSummary from '../../components/event-detail/event-summary';
 import EventLogistics from '../../components/event-detail/event-logistics';
 import EventContent from '../../components/event-detail/event-content';
 import ErrorAlert from '../../components/ui/error-alert';
-import { getEventById } from '../../helpers/api-util';
+import { getEventById, getAllEvents } from '../../helpers/api-util';
 
 function EventDetailPage(props) {
   
@@ -45,10 +45,12 @@ export async function getStaticProps(context) {
 
 //para que events ID debe pre renderizar
 export async function getStaticPaths() {
+  const events = await getAllEvents();
+
+  const paths = events.map(event => ({params: {eventId: event.id}}))
   return {
-    paths: [{
-      params: {eventId: 'e1'}
-    }]
+    paths: paths,
+    fallback: false //le dice a next que si intento renderizar algo no especificado que muestre un error 404
   }
 }
 export default EventDetailPage;
