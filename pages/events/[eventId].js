@@ -36,5 +36,7 @@ function EventDetailPage() {
     </Fragment>
   );
 }
-
+export async function getStaticProps() {
+  
+}
 export default EventDetailPage;
