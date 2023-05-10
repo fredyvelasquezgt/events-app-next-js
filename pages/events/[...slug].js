@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import { useRouter } from 'next/router';
 
-import { getFilteredEvents } from '../../dummy-data';
+import { getFilteredEvents } from '../../helpers/api-util';
 import EventList from '../../components/events/event-list';
 import ResultsTitle from '../../components/events/results-title';
 import Button from '../../components/ui/button';
@@ -10,13 +10,13 @@ import ErrorAlert from '../../components/ui/error-alert';
 function FilteredEventsPage(props) {
   const router = useRouter();
 
-  const filterData = router.query.slug;
+  // const filterData = router.query.slug;
 
-  const filteredYear = filterData[0];
-  const filteredMonth = filterData[1];
+  // const filteredYear = filterData[0];
+  // const filteredMonth = filterData[1];
 
-  const numYear = +filteredYear;
-  const numMonth = +filteredMonth;
+  // const numYear = +filteredYear;
+  // const numMonth = +filteredMonth;
 
   if (props.hasError) {
     return (
@@ -90,7 +90,7 @@ export async function getServerSideProps(context) {
     };
   }
 
-  const filteredEvents = getFilteredEvents({
+  const filteredEvents = await getFilteredEvents({
     year: numYear,
     month: numMonth,
   });
@@ -98,7 +98,7 @@ export async function getServerSideProps(context) {
 
   return {
     props: {
-
+      events: filteredEvents
     }
   }
 }
