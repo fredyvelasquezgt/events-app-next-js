@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
 import { getFilteredEvents } from '../../helpers/api-util';
@@ -14,7 +14,23 @@ function FilteredEventsPage(props) {
 
   const filterData = router.query.slug;
 
-  useSWR('https://nextjs-course-40c91-default-rtdb.firebaseio.com/events.json');
+  const {data, error} = useSWR('https://nextjs-course-40c91-default-rtdb.firebaseio.com/events.json');
+
+  useEffect(() => {
+    if(data) {
+      const events = []
+
+      for (const key in data) {
+        events.push({
+          id: key,
+          ...data[key]
+        })
+      }
+      return events;
+    }
+    
+  }, [data]);
+
 
   if (!filterData) {
     return <p className='center'>Loading...</p>;
