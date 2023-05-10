@@ -14,7 +14,7 @@ function FilteredEventsPage(props) {
 
   const filterData = router.query.slug;
 
-  useSWR();
+  useSWR('https://nextjs-course-40c91-default-rtdb.firebaseio.com/events.json');
 
   if (!filterData) {
     return <p className='center'>Loading...</p>;
