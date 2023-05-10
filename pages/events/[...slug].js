@@ -10,6 +10,7 @@ import useSWR from 'swr'
 
 
 function FilteredEventsPage(props) {
+  const [loadedEvents, setLoadedEvents] = useState()
   const router = useRouter();
 
   const filterData = router.query.slug;
@@ -26,13 +27,13 @@ function FilteredEventsPage(props) {
           ...data[key]
         })
       }
-      return events;
+      setLoadedEvents(events)
     }
     
   }, [data]);
 
 
-  if (!filterData) {
+  if (!loadedEvents) {
     return <p className='center'>Loading...</p>;
   }
 
