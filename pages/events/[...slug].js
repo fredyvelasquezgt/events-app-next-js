@@ -10,13 +10,13 @@ import ErrorAlert from '../../components/ui/error-alert';
 function FilteredEventsPage(props) {
   const router = useRouter();
 
-  // const filterData = router.query.slug;
+  const filterData = router.query.slug;
 
-  // const filteredYear = filterData[0];
-  // const filteredMonth = filterData[1];
+  const filteredYear = filterData[0];
+  const filteredMonth = filterData[1];
 
-  // const numYear = +filteredYear;
-  // const numMonth = +filteredMonth;
+  const numYear = +filteredYear;
+  const numMonth = +filteredMonth;
 
   if (props.hasError) {
     return (
@@ -52,7 +52,7 @@ function FilteredEventsPage(props) {
     );
   }
 
-  const date = new Date(numYear, numMonth - 1);
+  const date = new Date(props.date.year, props.date.month);
 
   return (
     <Fragment>
