@@ -6,11 +6,15 @@ import EventList from '../../components/events/event-list';
 import ResultsTitle from '../../components/events/results-title';
 import Button from '../../components/ui/button';
 import ErrorAlert from '../../components/ui/error-alert';
+import useSWR from 'swr'
+
 
 function FilteredEventsPage(props) {
   const router = useRouter();
 
   const filterData = router.query.slug;
+
+  useSWR();
 
   if (!filterData) {
     return <p className='center'>Loading...</p>;
