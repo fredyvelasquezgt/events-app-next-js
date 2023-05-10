@@ -31,10 +31,7 @@ function FilteredEventsPage(props) {
     );
   }
 
-  const filteredEvents = getFilteredEvents({
-    year: numYear,
-    month: numMonth,
-  });
+  const filteredEvents = props.events;
 
   if (!filterData) {
     return <p className='center'>Loading...</p>;
@@ -98,7 +95,11 @@ export async function getServerSideProps(context) {
 
   return {
     props: {
-      events: filteredEvents
+      events: filteredEvents,
+      date: {
+        year: numYear,
+        month: numMonth
+      }
     }
   }
 }
