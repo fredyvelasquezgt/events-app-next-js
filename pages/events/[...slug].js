@@ -12,6 +12,10 @@ function FilteredEventsPage(props) {
 
   const filterData = router.query.slug;
 
+  if (!filterData) {
+    return <p className='center'>Loading...</p>;
+  }
+
   const filteredYear = filterData[0];
   const filteredMonth = filterData[1];
 
@@ -33,9 +37,7 @@ function FilteredEventsPage(props) {
 
   const filteredEvents = props.events;
 
-  if (!filterData) {
-    return <p className='center'>Loading...</p>;
-  }
+  
 
  
 
